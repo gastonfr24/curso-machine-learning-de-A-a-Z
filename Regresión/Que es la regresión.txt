@@ -1,0 +1,10 @@
+					REGRESION
+En estadistica:
+se llama regresión al proceso estadístico de estimar relaciones que existen entre variables
+
+se centra en estudiar las relaciones ENTRE una variable dependiente de una o mas variables independientes
+
+
+						Hay 2 tipos
+			REGRESION LINEAL			REGRESION LOGÍSTICA
+		simple			múltiple	simple				múltiple
