@@ -42,7 +42,8 @@ rules = apriori(transacciones,
 
 results = list(rules)
 
-results[0]
+for i in range(len(results)):
+    print(results[i][0])
 
 
 
