@@ -1,16 +1,13 @@
-#Created on Sat Oct  1 21:24:08 2022
-#@author: Gaston Franco
-                                # Kernel de ACP
-# importar las librerias a usar
-import pandas as pd
+                                # Kernels SVM
+# importar librerias a usar
 import numpy as np
-import matplotlib.pyplot as plt
+import pandas as pd
+import matplotlib.pyplot as pls
 
 # importar el dataset
 df = pd.read_csv('Social_Network_Ads.csv')
 
-
-# variable dependiente e independientes
+# Variable dependiente e independiente/s
 X = df.iloc[:,2:4]
 y = df.iloc[:,-1]
 
@@ -27,31 +24,26 @@ sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
-# Aplicar ACP
-from sklearn.decomposition import KernelPCA
-kpca = KernelPCA(n_components= 2, kernel='rbf')
-X_train = kpca.fit_transform(X_train) 
-X_test = kpca.transform(X_test)
 
+# creacion del modelo SVM Classifier
+from sklearn.svm import SVC
 
-# creación del modelo de Regresión Logística
-from sklearn.linear_model import LogisticRegression
+classifier = SVC(
+    kernel='rbf',
+    random_state=0
+    )
 
-classifier = LogisticRegression(random_state=0).fit(X_train, y_train)
+classifier.fit(X_train, y_train)
+
 
 # Testeo deo modelo
 y_pred = classifier.predict(X_test)
 
-score = classifier.score(X_test,y_test) # 0.9
+score = classifier.score(X_test,y_test) #0.93
 
 # matriz de confusión
 from sklearn.metrics import confusion_matrix
 
 cf = confusion_matrix(y_test, y_pred)
-
-
-
-
-
-
-
+#64	04
+#03	29
